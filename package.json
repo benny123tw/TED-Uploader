@@ -1,0 +1,20 @@
+{
+  "name": "ted-upload",
+  "version": "1.0.0",
+  "description": "simple uploader for TED system",
+  "main": "upload.js",
+  "bin": "upload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Benny Yen",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "form-data": "^4.0.0",
+    "fs": "*",
+    "http": "*",
+    "jszip": "^3.6.0"
+  }
+}
