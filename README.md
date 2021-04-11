@@ -14,4 +14,4 @@ You don't have to **delete** the zip file after upload. This application will ig
 3. Done.
 
 ## License
-[MIT]()
+[MIT](https://github.com/benny123tw/TED-Uploader/blob/master/LICENSE)
