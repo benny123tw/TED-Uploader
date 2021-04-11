@@ -1,0 +1,10 @@
+{
+    "dir": "./", 
+    "allow": ["json", "xml"], 
+    "method": "post", 
+    "host": "localhost",
+    "path": "http://localhost/TED/System/Upload",
+    "params": {
+        "id": "FormUpload" 
+    }
+}

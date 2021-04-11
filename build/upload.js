@@ -163,16 +163,7 @@ const zipper = async (zip, zipLength, options = {}) => {
 }
 
 // Application config
-const config = { 
-    dir: "./", 
-    allow: ["json", "xml"], 
-    method: "post", 
-    host: "localhost",
-    path: "http://localhost/TED/System/Upload",
-    params: {
-        id: "FormUpload" // url will become => http://localhost/TED/System/Upload?id=FormUpload
-    }
-};
+const config = require('./config.json');
 
 // Application entry
 uploader(config);

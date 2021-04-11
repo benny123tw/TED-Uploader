@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "simple uploader for TED system",
   "main": "upload.js",
-  "bin": "upload.js",
+  "bin": "build/upload.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/upload.js"
   },
   "keywords": [],
   "author": "Benny Yen",
@@ -16,5 +17,10 @@
     "fs": "*",
     "http": "*",
     "jszip": "^3.6.0"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js",
+    "targets": [ "node14-win-x86" ],
+    "outputPath": "dist"
   }
 }
