@@ -16,7 +16,7 @@ const getFileContent = (fileName, folderName) => fs.readFileSync(getFullFileName
 const getFullFileName = (fileName, folderName = '') => `${config.dir}${folderName}/${fileName}`;
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-var zipLength = 0;
+var zipLength = 1;
 console.log(`${chalk.greenBright('Zip files:')}`);
 
 for (let fileName of root) {
