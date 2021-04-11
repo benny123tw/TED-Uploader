@@ -163,10 +163,7 @@ const zipper = async (zip, zipLength, options = {}) => {
 }
 
 // Application config
-const file = fs.readFileSync('./config.json', {encoding: "utf-8",});
-const config = JSON.parse(file);
-// if path is not end with '/' then add '/'
-config.dir = !config.dir.endsWith('/') ? config.dir + '/' : config.dir;
+const config = require("./config.json");
 
 // Application entry
 uploader(config);

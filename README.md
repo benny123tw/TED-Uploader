@@ -12,15 +12,20 @@ You don't have to **delete** the zip file after uploaded. This application will 
 You can delete it if you don't need it.
 
 ## How to use it
-### Exe
-1. Put `TED-Uploader` to project template folder. E.g. `/ModuleData/MOE/TED-Uploader`
-2. Click `TED-Uploader` and wait for uploading
-3. Done.
+### TED-Uploader.Exe
+1. Modify path in `config.json` set to your template folder. E.g. `C://TED/ModuleData/MOE/`
+2. Click `TED-Uploader` and wait for uploading.
+3. Done!
+
+### Local-Uploader.exe
+1. Put your `Local-Uploader.exe` to your template folder.E.g. `C://TED/ModuleData/MOE/Local-Uploader.exe`
+2. Click `Local-Uploader.exe` and wait for uploading.
+3. Done!
 
 ### Nodejs
 1. Clone this repo
 2. Run `npm install`
-3. Modify `update.js` config
+3. Modify `config.json`
 4. Type `node update.js` in terminal to start
 
 ## License
