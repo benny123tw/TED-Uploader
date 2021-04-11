@@ -8,7 +8,8 @@ You don't have to **delete** the zip file after uploaded. This application will 
 
 **Output:** `output.zip`
 
-****
+**Note:** I add a lot of `console.log` and `delay` for more visualizer.
+You can delete it if you don't need it.
 
 ## How to use it
 ### Exe
