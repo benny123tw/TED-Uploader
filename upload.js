@@ -55,7 +55,7 @@ subFolder.forEach(folderName => {
     }
 });
 
-var zipLength = 0;
+var zipLength = 1;
 zip.forEach((path, file) => {if(!file.dir) zipLength++});
 
 // zipper
