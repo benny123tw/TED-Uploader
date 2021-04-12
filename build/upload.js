@@ -127,6 +127,8 @@ const zipper = async (zip, zipLength, options = {}) => {
             console.log(`${chalk.greenBright('Result:')} ${newZip} >> ${chalk.redBright('Failed!')}`);
         });
 
+        await delay(1000);
+
         //create form-data
         const formData = new FormData();
 
@@ -158,6 +160,7 @@ const zipper = async (zip, zipLength, options = {}) => {
                 console.log('Server Response: ' + chalk.yellowBright(body));
         });
         await delay(2000);
+        fs.unlinkSync('./' + newZip)
         });
     });
 }
