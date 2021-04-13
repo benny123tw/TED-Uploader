@@ -3,6 +3,7 @@ const JSZip = require("jszip");
 const FormData = require("form-data");
 const http = require("http");
 const chalk = require("chalk");
+const ProgressBar = require("./ProgressBar");
 
 // get file with encding
 const getFileContent = (fileName, path = "./") =>
@@ -121,34 +122,37 @@ const zipper = async (zip, zipLength, options = {}) => {
         },
     }).then(async (content) => {
         console.log(`${chalk.greenBright("Total:")} ${zipLength} files`);
-        for (let i = 0; i < 10; i++) {
-            process.stdout.write("===");
-            await delay(100);
-        }
-        process.stdout.write("\n");
+
         let newZip = "output.zip";
         // write to path
-        fs.writeFile("./" + newZip, content, (err) => {
-            if (!err)
-                return console.log(
-                    `${chalk.greenBright(
-                        "Result:"
-                    )} ${newZip} >> ${chalk.yellowBright("Completed!")}`
-                );
+        try {
+            await fs.writeFileSync("./" + newZip, content);
+            console.log(
+                `${chalk.greenBright(
+                    "Result:"
+                )} ${newZip} >> ${chalk.yellowBright("Completed!")}`
+            );
+        } catch (error) {
             console.log(
                 `${chalk.greenBright("Result:")} ${newZip} >> ${chalk.redBright(
                     "Failed!"
                 )}`
             );
-        });
+            console.error(chalk.red(error));
+        }
 
-        await delay(1000);
+        const Bar = new ProgressBar();
+        Bar.init(10);
+        for (let i = 1; i <= 10; i++) {
+            Bar.update(i);
+            await delay(100);
+        }
 
         //create form-data
         const formData = new FormData();
 
         // body{ id: file, value: output.zip }
-        formData.append("file", fs.createReadStream("./output.zip"));
+        formData.append("file", fs.createReadStream("./" + newZip));
 
         // using http sendding request
         const request = http.request({
@@ -164,12 +168,12 @@ const zipper = async (zip, zipLength, options = {}) => {
 
         // set response event
         request.on("response", async (res) => {
+            console.log(`${chalk.yellowBright(`Upload Completed!`)}`);
             console.log(
                 `Status Code: ${chalk.greenBright(
                     res.statusCode
                 )} ${chalk.greenBright(res.statusMessage)}`
             );
-            console.log(`${chalk.yellowBright(`Upload Completed!`)}`);
             let body = "";
             res.on("data", function (chunk) {
                 body += chunk;
@@ -185,7 +189,7 @@ const zipper = async (zip, zipLength, options = {}) => {
 };
 
 // Application config
-const file = fs.readFileSync("./config.json", { encoding: "utf-8" });
+const file = fs.readFileSync("./build/config.json", { encoding: "utf-8" });
 const config = JSON.parse(file);
 // if path is not end with '/' then add '/'
 config.dir = !config.dir.endsWith("/") ? config.dir + "/" : config.dir;

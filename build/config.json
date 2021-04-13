@@ -1,5 +1,5 @@
 {
-    "dir": "./", 
+    "dir": "./_test/", 
     "allow": ["json", "xml"], 
     "method": "post", 
     "host": "localhost",
